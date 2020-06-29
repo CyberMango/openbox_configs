@@ -182,7 +182,7 @@ Copy the file to $HOME/.config/openbox/ instead. -->
             <keybind key="W-Right">
                 <action name="unmaximize"><direction>horizontal</direction></action>
                 <action name="if">
-                    <!-- If on half right screen or right corners -->
+                    <!-- If on half left screen or left corners -->
                     <query><title>Left*</title></query><then>
                         <action name="if">
                             <query><title>*Corner</title></query><then>
@@ -203,8 +203,9 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                                 </action>
                             </then>
                             <else> <!-- On left but not a corner -->
+                                <action name="unmaximize"><direction>vertical</direction></action>
                                 <action name="execute">
-                                    <command>wmctrl -r :ACTIVE: -e 0,250,90,710,424</command>
+                                    <command>wmctrl -r :ACTIVE: -e 0,220,90,710,424</command>
                                 </action>
                             </else>
                         </action>
@@ -231,10 +232,10 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                                                     <command>wmctrl -r :ACTIVE: -N LeftTopCorner</command>
                                                 </action>
                                             </then>
+                                            <else>
                                                 <action name="Execute">
                                                     <command>wmctrl -r :ACTIVE: -N LeftBottomCorner</command>
                                                 </action>
-                                            <else>
                                             </else>
                                         </action>
                                     </else>
@@ -262,6 +263,7 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                 <action name="if">
                     <!-- If on half right screen or right corners -->
                     <query><title>Right*</title></query><then>
+                        <action name="unmaximize"><direction>vertical</direction></action>
                         <action name="execute">
                             <command>wmctrl -r :ACTIVE: -e 0,450,90,710,424</command>
                         </action>
