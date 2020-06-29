@@ -1,0 +1,5 @@
+lxpanel &
+xbindkeys &
+xset r rate 200 35
+setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us,il
+nohup > /dev/null 2>/dev/null terminator -m &
