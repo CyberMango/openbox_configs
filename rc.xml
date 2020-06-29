@@ -218,9 +218,6 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                                 </action>
                                 <action name="if">
                                     <query><title>*Half</title></query><then>
-                                        <action name="Maximize">
-                                            <direction>vertical</direction>
-                                        </action>
                                         <action name="Execute">
                                             <command>wmctrl -r :ACTIVE: -N LeftHalf</command>
                                         </action>
@@ -263,22 +260,73 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                 <action name="if">
                     <!-- If on half right screen or right corners -->
                     <query><title>Right*</title></query><then>
-                        <action name="unmaximize"><direction>vertical</direction></action>
-                        <action name="execute">
-                            <command>wmctrl -r :ACTIVE: -e 0,450,90,710,424</command>
+                        <action name="if">
+                            <query><title>*Corner</title></query><then>
+                                <action name="MoveResizeTo">
+                                    <x>0</x>
+                                </action>
+                                <action name="if">
+                                    <query><title>*Top*</title></query><then>
+                                        <action name="Execute">
+                                            <command>wmctrl -r :ACTIVE: -N LeftTopCorner</command>
+                                        </action>
+                                    </then>
+                                    <else>
+                                        <action name="Execute">
+                                            <command>wmctrl -r :ACTIVE: -N LeftBottomCorner</command>
+                                        </action>
+                                    </else>
+                                </action>
+                            </then>
+                            <else> <!-- On right but not a corner -->
+                                <action name="unmaximize"><direction>vertical</direction></action>
+                                <action name="execute">
+                                    <command>wmctrl -r :ACTIVE: -e 0,450,90,710,424</command>
+                                </action>
+                            </else>
                         </action>
                     </then>
-                    <else>
-                        <action name="MoveResizeTo">
-                            <x>0</x>
-                            <y>0</y>
-                            <width>50%</width>
-                        </action>
-                        <action name="Maximize">
-                            <direction>vertical</direction>
-                        </action>
-                        <action name="Execute">
-                            <command>wmctrl -r :ACTIVE: -N LeftHalf</command>
+                    <else> <!-- If not on right side -->
+                        <action name="if">
+                            <query><title>Left*</title></query><then>
+                                <action name="MoveResizeTo">
+                                    <x>1/2</x>
+                                </action>
+                                <action name="if">
+                                    <query><title>*Half</title></query><then>
+                                        <action name="Execute">
+                                            <command>wmctrl -r :ACTIVE: -N RightHalf</command>
+                                        </action>
+                                    </then>
+                                    <else> <!-- Else its a corner. -->
+                                        <action name="if">
+                                            <query><title>*Top*</title></query><then>
+                                                <action name="Execute">
+                                                    <command>wmctrl -r :ACTIVE: -N RightTopCorner</command>
+                                                </action>
+                                            </then>
+                                            <else>
+                                                <action name="Execute">
+                                                    <command>wmctrl -r :ACTIVE: -N RightBottomCorner</command>
+                                                </action>
+                                            </else>
+                                        </action>
+                                    </else>
+                                </action>
+                            </then>
+                            <else> <!-- Else its not on the sides. -->
+                                <action name="MoveResizeTo">
+                                    <x>0</x>
+                                    <y>0</y>
+                                    <width>50%</width>
+                                </action>
+                                <action name="Maximize">
+                                    <direction>vertical</direction>
+                                </action>
+                                <action name="Execute">
+                                    <command>wmctrl -r :ACTIVE: -N LeftHalf</command>
+                                </action>
+                            </else>
                         </action>
                     </else>
                 </action>
