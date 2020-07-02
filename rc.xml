@@ -197,9 +197,12 @@ Copy the file to $HOME/.config/openbox/ instead. -->
             <then>
               <action name="unmaximize">
                 <direction>vertical</direction>
-              </action>
-              <action name="execute">
-                <command>xdotool getactivewindow windowsize 710 424 windowmove 220 110</command>
+                </action>
+              <action name="MoveResizeTo">
+                  <x>220</x>
+                  <y>110</y>
+                  <width>720</width>
+                  <height>450</height>
               </action>
               <action name="execute">
                   <command>bash ~/.config/openbox/foropen.sh /cc</command>
@@ -304,8 +307,11 @@ Copy the file to $HOME/.config/openbox/ instead. -->
               <action name="unmaximize">
                 <direction>vertical</direction>
               </action>
-              <action name="execute">
-                  <command>xdotool getactivewindow windowsize 710 424 windowmove 450 110</command>
+              <action name="MoveResizeTo">
+                  <x>450</x>
+                  <y>110</y>
+                  <width>720</width>
+                  <height>450</height>
               </action>
               <action name="execute">
                   <command>bash ~/.config/openbox/foropen.sh /cc</command>
@@ -497,8 +503,11 @@ Copy the file to $HOME/.config/openbox/ instead. -->
               <action name="if">
                 <query><maximized>yes</maximized></query><then>
                   <action name="Unmaximize"/>
-                  <action name="Execute">
-                    <command>xdotool getactivewindow windowsize 710 424 windowmove 335 70</command>
+                  <action name="MoveResizeTo">
+                      <x>335</x>
+                      <y>70</y>
+                      <width>720</width>
+                      <height>450</height>
                   </action>
                   <action name="Execute">
                       <command>bash ~/.config/openbox/foropen.sh /cc</command>
