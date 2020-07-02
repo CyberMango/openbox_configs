@@ -186,52 +186,53 @@ Copy the file to $HOME/.config/openbox/ instead. -->
       <action name="if">
         <!-- If on half left screen or left corners -->
         <query>
-          <title>Left*</title>
+          <title type="regex">/l.$</title>
         </query>
         <then>
           <action name="if">
+            <!-- if on left half. -->
             <query>
-              <title>*Corner</title>
+              <title type="regex">/.h$</title>
             </query>
             <then>
+              <action name="unmaximize">
+                <direction>vertical</direction>
+              </action>
+              <action name="execute">
+                <command>xdotool getactivewindow windowsize 710 424 windowmove 220 110</command>
+              </action>
+              <action name="execute">
+                  <command>bash ~/.config/openbox/foropen.sh /cc</command>
+              </action>
+            </then>
+            <!-- Else its in a conrner. -->
+            <else>
               <action name="MoveResizeTo">
                 <x>1/2</x>
               </action>
               <action name="if">
                 <query>
-                  <title>*Top*</title>
+                  <title type="regex">/.t$</title>
                 </query>
                 <then>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N RightTopCorner</command>
+                      <command>bash ~/.config/openbox/foropen.sh /rt</command>
                   </action>
                 </then>
                 <else>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N RightBottomCorner</command>
+                      <command>bash ~/.config/openbox/foropen.sh /rb</command>
                   </action>
                 </else>
-              </action>
-            </then>
-            <else>
-              <!-- On left but not a corner -->
-              <action name="unmaximize">
-                <direction>vertical</direction>
-              </action>
-              <action name="execute">
-                <command>wmctrl -r :ACTIVE: -e 0,220,110,710,424</command>
-              </action>
-              <action name="Execute">
-                <command>wmctrl -r :ACTIVE: -N Centered</command>
               </action>
             </else>
           </action>
         </then>
+        <!-- Else if on right side -->
         <else>
-          <!-- If not on Left side -->
           <action name="if">
             <query>
-              <title>Right*</title>
+              <title type="regex">/r.$</title>
             </query>
             <then>
               <action name="MoveResizeTo">
@@ -239,27 +240,27 @@ Copy the file to $HOME/.config/openbox/ instead. -->
               </action>
               <action name="if">
                 <query>
-                  <title>*Half</title>
+                  <title type="regex">/.h$</title>
                 </query>
                 <then>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N LeftHalf</command>
+                      <command>bash ~/.config/openbox/foropen.sh /lh</command>
                   </action>
                 </then>
                 <else>
                   <!-- Else its a corner. -->
                   <action name="if">
                     <query>
-                      <title>*Top*</title>
+                      <title type="regex">/.t$</title>
                     </query>
                     <then>
                       <action name="Execute">
-                        <command>wmctrl -r :ACTIVE: -N LeftTopCorner</command>
+                          <command>bash ~/.config/openbox/foropen.sh /lt</command>
                       </action>
                     </then>
                     <else>
                       <action name="Execute">
-                        <command>wmctrl -r :ACTIVE: -N LeftBottomCorner</command>
+                          <command>bash ~/.config/openbox/foropen.sh /lb</command>
                       </action>
                     </else>
                   </action>
@@ -277,14 +278,13 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                 <direction>vertical</direction>
               </action>
               <action name="Execute">
-                <command>wmctrl -r :ACTIVE: -N RightHalf</command>
+                  <command>bash ~/.config/openbox/foropen.sh /rh</command>
               </action>
             </else>
           </action>
         </else>
       </action>
-    </keybind>
-    <!-- W-Right -->
+    </keybind> <!-- W-Right -->
     <keybind key="W-Left">
       <action name="unmaximize">
         <direction>horizontal</direction>
@@ -292,52 +292,53 @@ Copy the file to $HOME/.config/openbox/ instead. -->
       <action name="if">
         <!-- If on half right screen or right corners -->
         <query>
-          <title>Right*</title>
+          <title type="regex">/r.$</title>
         </query>
         <then>
           <action name="if">
+            <!-- if on right half. -->
             <query>
-              <title>*Corner</title>
+              <title type="regex">/.h$</title>
             </query>
             <then>
+              <action name="unmaximize">
+                <direction>vertical</direction>
+              </action>
+              <action name="execute">
+                  <command>xdotool getactivewindow windowsize 710 424 windowmove 450 110</command>
+              </action>
+              <action name="execute">
+                  <command>bash ~/.config/openbox/foropen.sh /cc</command>
+              </action>
+            </then>
+            <!-- Else its in a conrner. -->
+            <else>
               <action name="MoveResizeTo">
                 <x>0</x>
               </action>
               <action name="if">
                 <query>
-                  <title>*Top*</title>
+                  <title type="regex">/.t$</title>
                 </query>
                 <then>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N LeftTopCorner</command>
+                      <command>bash ~/.config/openbox/foropen.sh /lt</command>
                   </action>
                 </then>
                 <else>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N LeftBottomCorner</command>
+                      <command>bash ~/.config/openbox/foropen.sh /lb</command>
                   </action>
                 </else>
-              </action>
-            </then>
-            <else>
-              <!-- On right but not a corner -->
-              <action name="unmaximize">
-                <direction>vertical</direction>
-              </action>
-              <action name="execute">
-                <command>wmctrl -r :ACTIVE: -e 0,450,110,710,424</command>
-              </action>
-              <action name="execute">
-                <command>wmctrl -r :ACTIVE: -N Centered</command>
               </action>
             </else>
           </action>
         </then>
+        <!-- Else if on left side -->
         <else>
-          <!-- If not on right side -->
           <action name="if">
             <query>
-              <title>Left*</title>
+              <title type="regex">/l.$</title>
             </query>
             <then>
               <action name="MoveResizeTo">
@@ -345,27 +346,27 @@ Copy the file to $HOME/.config/openbox/ instead. -->
               </action>
               <action name="if">
                 <query>
-                  <title>*Half</title>
+                  <title type="regex">/.h$</title>
                 </query>
                 <then>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N RightHalf</command>
+                      <command>bash ~/.config/openbox/foropen.sh /rh</command>
                   </action>
                 </then>
                 <else>
                   <!-- Else its a corner. -->
                   <action name="if">
                     <query>
-                      <title>*Top*</title>
+                      <title type="regex">/.t$</title>
                     </query>
                     <then>
                       <action name="Execute">
-                        <command>wmctrl -r :ACTIVE: -N RightTopCorner</command>
+                          <command>bash ~/.config/openbox/foropen.sh /rt</command>
                       </action>
                     </then>
                     <else>
                       <action name="Execute">
-                        <command>wmctrl -r :ACTIVE: -N RightBottomCorner</command>
+                          <command>bash ~/.config/openbox/foropen.sh /rb</command>
                       </action>
                     </else>
                   </action>
@@ -383,33 +384,33 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                 <direction>vertical</direction>
               </action>
               <action name="Execute">
-                <command>wmctrl -r :ACTIVE: -N LeftHalf</command>
+                  <command>bash ~/.config/openbox/foropen.sh /lh</command>
               </action>
             </else>
           </action>
         </else>
       </action>
-    </keybind>
+    </keybind> <!-- W-Left -->
     <keybind key="W-Up">
       <action name="if">
         <!-- If on half screen, move to top corner -->
-        <query><title>*Half</title></query><then>
+        <query><title type="regex">/.h$</title></query><then>
           <action name="UnmaximizeFull"/>
           <action name="MoveResizeTo">
             <y>0</y>
             <height>50%</height>
           </action>
           <action name="if">
-            <query><title>Left*</title></query><then>
+            <query><title type="regex">/l.$</title></query><then>
               <action name="Execute">
-                <command>wmctrl -r :ACTIVE: -N LeftTopCorner</command>
+                  <command>bash ~/.config/openbox/foropen.sh /lt</command>
               </action>
             </then>
           </action>
           <action name="if">
-            <query><title>Right*</title></query><then>
+            <query><title type="regex">/r.$</title></query><then>
               <action name="Execute">
-                <command>wmctrl -r :ACTIVE: -N RightTopCorner</command>
+                  <command>bash ~/.config/openbox/foropen.sh /rt</command>
               </action>
             </then>
           </action>
@@ -417,18 +418,18 @@ Copy the file to $HOME/.config/openbox/ instead. -->
         <else>
           <!-- If in the bottom corner, become half screen. -->
           <action name="if">
-            <query><title>*BottomCorner</title></query><then>
+            <query><title type="regex">/.b$</title></query><then>
               <action name="if">
-                <query><title>Left*</title></query><then>
+                <query><title type="regex">/l.$</title></query><then>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N LeftHalf</command>
+                      <command>bash ~/.config/openbox/foropen.sh /lh</command>
                   </action>
                 </then>
               </action>
               <action name="if">
-                <query><title>Right*</title></query><then>
+                <query><title type="regex">/r.$</title></query><then>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N RightHalf</command>
+                      <command>bash ~/.config/openbox/foropen.sh /rh</command>
                   </action>
                 </then>
               </action>
@@ -439,7 +440,7 @@ Copy the file to $HOME/.config/openbox/ instead. -->
             <else>
               <action name="Maximize"/>
               <action name="Execute">
-                <command>wmctrl -r :ACTIVE: -N Fullscreen</command>
+                  <command>bash ~/.config/openbox/foropen.sh /fu</command>
               </action>
             </else>
           </action>
@@ -449,23 +450,23 @@ Copy the file to $HOME/.config/openbox/ instead. -->
     <keybind key="W-Down">
       <action name="if">
         <!-- If on half screen, move to bottom corner -->
-        <query><title>*Half</title></query><then>
+        <query><title type="regex">/.h$</title></query><then>
           <action name="UnmaximizeFull"/>
           <action name="MoveResizeTo">
             <height>50%</height>
             <y>1/2</y>
           </action>
           <action name="if">
-            <query><title>Left*</title></query><then>
+            <query><title type="regex">/l.$</title></query><then>
               <action name="Execute">
-                <command>wmctrl -r :ACTIVE: -N LeftBottomCorner</command>
+                  <command>bash ~/.config/openbox/foropen.sh /lb</command>
               </action>
             </then>
           </action>
           <action name="if">
-            <query><title>Right*</title></query><then>
+            <query><title type="regex">/r.$</title></query><then>
               <action name="Execute">
-                <command>wmctrl -r :ACTIVE: -N RightBottomCorner</command>
+                  <command>bash ~/.config/openbox/foropen.sh /rb</command>
               </action>
             </then>
           </action>
@@ -473,21 +474,21 @@ Copy the file to $HOME/.config/openbox/ instead. -->
         <else>
           <action name="if">
             <!-- If on top corner, move to half screen -->
-            <query><title>*TopCorner</title></query><then>
+            <query><title type="regex">/.t$</title></query><then>
               <action name="Maximize">
                 <direction>vertical</direction>
               </action>
               <action name="if">
-                <query><title>Left*</title></query><then>
+                <query><title type="regex">/l.$</title></query><then>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N LeftHalf</command>
+                      <command>bash ~/.config/openbox/foropen.sh /lh</command>
                   </action>
                 </then>
               </action>
               <action name="if">
-                <query><title>Right*</title></query><then>
+                <query><title type="regex">/r.$</title></query><then>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N RightHalf</command>
+                      <command>bash ~/.config/openbox/foropen.sh /rh</command>
                   </action>
                 </then>
               </action>
@@ -497,11 +498,11 @@ Copy the file to $HOME/.config/openbox/ instead. -->
                 <query><maximized>yes</maximized></query><then>
                   <action name="Unmaximize"/>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -e 0,335,70,710,424</command>
+                    <command>xdotool getactivewindow windowsize 710 424 windowmove 335 70</command>
                   </action>
                   <action name="Execute">
-                    <command>wmctrl -r :ACTIVE: -N Centered</command>
-                  </action>
+                      <command>bash ~/.config/openbox/foropen.sh /cc</command>
+                    </action>
                 </then>
                 <else>
                   <action name="iconify"/>
@@ -511,7 +512,7 @@ Copy the file to $HOME/.config/openbox/ instead. -->
           </action>
         </else>
       </action>
-    </keybind>
+    </keybind> <!-- W-Down -->
     <!-- Windows-like desktop control @@@@-->
     <keybind key="W-l">
       <action name="Execute">
