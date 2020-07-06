@@ -11,6 +11,7 @@ Winky+arrow movements were developed to work only for a single monitor, and they
 - Moving an unmaximized window down will iconify it.
 
 Showcase of the movements:
+
 ![](openbox_bindings_showcase.gif)
 
 Dependancies:
