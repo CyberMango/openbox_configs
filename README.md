@@ -23,9 +23,9 @@ the window's position. If you ever find a better way to do this in openbox witho
 let me know.
 
 How to use this:
-- To override your settings and use mine, copy the contents to ~/.config/openbox
-- To add the winkey+arrow movements, copy "foropen.sh" to ~/.config/openbox , then open "rc.xml", seach for the section that starts
-  with "Windows-like window movements @@@@", copy that section to your "~/.config/openbox/rc.xml" inside of the "keyboard" tag.
+- To override your settings and use mine, copy the contents to \~/.config/openbox
+- To add the winkey+arrow movements, copy "foropen.sh" to \~/.config/openbox , then open "rc.xml", seach for the section that starts
+  with "Windows-like window movements @@@@", copy that section to your "\~/.config/openbox/rc.xml" inside of the "keyboard" tag.
 
 Feel free to copy, use and extend it according to the rules of the random license I'll pick.
 
