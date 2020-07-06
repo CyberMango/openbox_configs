@@ -10,6 +10,13 @@ Winky+arrow movements were developed to work only for a single monitor, and they
 - Moving down a maximized window will move it to the center (unmaximized).
 - Moving an unmaximized window down will iconify it.
 
+Showcase of the movements:
+![](openbox_bindings_showcase.gif)
+
+Dependancies:
+- Bash (Easy to replace in rc.xml).
+- xdotool.
+
 *This behavior is achieved in a hacky (yet successful) way by editing the window's title bar, and inspecitng it to get data about
 the window's position. If you ever find a better way to do this in openbox without basically scripting a new window manager, please
 let me know.
