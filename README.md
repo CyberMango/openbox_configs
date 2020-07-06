@@ -1,4 +1,4 @@
-My configuration directory for openbox.
+My configurations directory for openbox.
 pretty basic for now (and probably forever), except it contains a winkey+arrow window movements that mimic windows10's.
 
 Winky+arrow movements were developed to work only for a single monitor, and they include:
@@ -21,6 +21,11 @@ Dependancies:
 *This behavior is achieved in a hacky (yet successful) way by editing the window's title bar, and inspecitng it to get data about
 the window's position. If you ever find a better way to do this in openbox without basically scripting a new window manager, please
 let me know.
+
+How to use this:
+- To override your settings and use mine, copy the contents to ~/.config/openbox
+- To add the winkey+arrow movements, copy "foropen.sh" to ~/.config/openbox , then open "rc.xml", seach for the section that starts
+  with "Windows-like window movements @@@@", copy that section to your "~/.config/openbox/rc.xml" inside of the "keyboard" tag.
 
 Feel free to copy, use and extend it according to the rules of the random license I'll pick.
 
