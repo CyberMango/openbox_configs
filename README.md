@@ -13,3 +13,5 @@ the window's position. If you ever find a better way to do this in openbox witho
 let me know.
 
 Feel free to copy, use and extend it according to the rules of the random license I'll pick.
+
+This code is released under the GNU General Public License v3.0
