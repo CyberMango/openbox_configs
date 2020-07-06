@@ -7,6 +7,8 @@ Winky+arrow movements were developed to work only for a single monitor, and they
 - From top corner, moving up maximizes the window size.
 - From bottom corner, moving down iconifes the window.
 - Moving to the direction outside of the monitor loops the window to the other side.
+- Moving down a maximized window will move it to the center (unmaximized).
+- Moving an unmaximized window down will iconify it.
 
 *This behavior is achieved in a hacky (yet successful) way by editing the window's title bar, and inspecitng it to get data about
 the window's position. If you ever find a better way to do this in openbox without basically scripting a new window manager, please
